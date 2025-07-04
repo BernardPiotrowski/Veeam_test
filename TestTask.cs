@@ -39,6 +39,14 @@ namespace Veeam_test
             string interval = args[2];
             int inter = int.Parse(interval);
             string logFile = args[3];
+            DirectoryInfo sourceDirectory = new DirectoryInfo(sourceFolder);
+            
+            if (!sourceDirectory.Exists)
+            {
+                Console.WriteLine("Lack of source folder !");
+                Console.WriteLine("Program will be aborted !");
+                Environment.Exit(0);
+            }
 
             if (!File.Exists(logFile))
             {
